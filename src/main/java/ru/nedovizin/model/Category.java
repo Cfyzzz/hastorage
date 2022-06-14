@@ -1,14 +1,15 @@
 package ru.nedovizin.model;
 
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Data
 @Entity
+@Table(name = "category")
 public class Category {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)

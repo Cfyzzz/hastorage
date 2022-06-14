@@ -2,13 +2,10 @@ package ru.nedovizin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.nedovizin.model.Category;
+import ru.nedovizin.model.Categories;
 import ru.nedovizin.model.CategoryRepository;
-
-import java.util.List;
+import ru.nedovizin.model.MultipleResource;
 
 @RestController
 @RequestMapping("/api/category")
@@ -23,13 +20,17 @@ public class CategoryController {
     }
 
     @PostMapping("/{token}")
-    public void putToStorage(@PathVariable(value = "token") String token, @RequestBody List<Category> categories) {
+    public void putToStorage(@PathVariable(value = "token") String token, @RequestBody Categories categories) {
         log.info("SaveAll by token " + token);
-        categoryRepository.saveAll(categories);
+        categoryRepository.saveAll(categories.getCategories());
     }
 
     @GetMapping("/{token}")
-    public List<Category> findAllCategories(@PathVariable(value = "token") String token) {
-        return categoryRepository.findAllByToken(token);
+    public MultipleResource findAllCategories(@PathVariable(value = "token") String token) {
+        MultipleResource result = new MultipleResource();
+        result.setAnswer(categoryRepository.findAllByToken(token));
+        result.setStatus("Ok");
+        result.setDescription("Категории получены");
+        return result;
     }
 }
