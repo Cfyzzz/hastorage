@@ -20,9 +20,13 @@ public class CategoryController {
     }
 
     @PostMapping("/{token}")
-    public void putToStorage(@PathVariable(value = "token") String token, @RequestBody Categories categories) {
+    public MultipleResource putToStorage(@PathVariable(value = "token") String token, @RequestBody Categories categories) {
         log.info("SaveAll by token " + token);
         categoryRepository.saveAll(categories.getCategories());
+        MultipleResource result = new MultipleResource();
+        result.setStatus("Ok");
+        result.setDescription("Категории получены");
+        return result;
     }
 
     @GetMapping("/{token}")
@@ -30,7 +34,7 @@ public class CategoryController {
         MultipleResource result = new MultipleResource();
         result.setAnswer(categoryRepository.findAllByToken(token));
         result.setStatus("Ok");
-        result.setDescription("Категории получены");
+        result.setDescription("Категории отправлены");
         return result;
     }
 }
