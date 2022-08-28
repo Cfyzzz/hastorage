@@ -21,7 +21,7 @@ public class CategoryController {
 
     @PostMapping("/{token}")
     public MultipleResource putToStorage(@PathVariable(value = "token") String token, @RequestBody Categories categories) {
-        log.info("SaveAll by token " + token);
+        log.info("Save all categories by token ".concat(token));
         categoryRepository.saveAll(categories.getCategories());
         MultipleResource result = new MultipleResource();
         result.setStatus("Ok");
@@ -31,6 +31,7 @@ public class CategoryController {
 
     @GetMapping("/{token}")
     public MultipleResource findAllCategories(@PathVariable(value = "token") String token) {
+        log.info("Find all categories by token ".concat(token));
         MultipleResource result = new MultipleResource();
         result.setAnswer(categoryRepository.findAllByToken(token));
         result.setStatus("Ok");
