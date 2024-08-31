@@ -7,5 +7,9 @@ import java.util.List;
 
 @Data
 public class Categories implements Serializable {
-    public List<Category> categories;
+    public List<CategoryDTO> categories;
+
+    public List<CategoryDTO> getCategories() {
+        return categories;
+    }
 }

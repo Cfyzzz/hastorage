@@ -11,14 +11,22 @@ public class MultipleResource implements Serializable {
     public String description;
     public Answer answer = null;
 
-    public void setAnswer(List<Category> categories) {
+    public void setAnswer(List<CategoryDTO> categories) {
         answer = new Answer(categories);
     }
 
-    public static class Answer {
-         public List<Category> categories = null;
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-         public Answer(List<Category> categories) {
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public static class Answer {
+         public List<CategoryDTO> categories = null;
+
+         public Answer(List<CategoryDTO> categories) {
              this.categories = categories;
          }
     }

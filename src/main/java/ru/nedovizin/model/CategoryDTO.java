@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "category")
-public class Category {
+public class CategoryDTO {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EmbeddedId
@@ -24,11 +24,11 @@ public class Category {
     private int reserved;
     private int planned;
 
-    public Category() {
+    public CategoryDTO() {
         categoryId = new CategoryId();
     }
 
-    public Category(CategoryId categoryId, int priority, String period, String type, int color, String categoryName, int exposed, int reserved, int planned) {
+    public CategoryDTO(CategoryId categoryId, int priority, String period, String type, int color, String categoryName, int exposed, int reserved, int planned) {
         this.categoryId = categoryId;
         this.priority = priority;
         this.period = period;
@@ -40,7 +40,7 @@ public class Category {
         this.planned = planned;
     }
 
-    public Category(long id, String token, int priority, String period, String type, int color, String categoryName, int exposed, int reserved, int planned) {
+    public CategoryDTO(long id, String token, int priority, String period, String type, int color, String categoryName, int exposed, int reserved, int planned) {
         this.categoryId.setToken(token);
         this.categoryId.setId(id);
         this.priority = priority;
@@ -69,6 +69,37 @@ public class Category {
         return categoryId.getToken();
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public int getExposed() {
+        return exposed;
+    }
+
+    public int getReserved() {
+        return reserved;
+    }
+
+    public int getPlanned() {
+        return planned;
+    }
 
     @Setter
     @Getter
@@ -85,6 +116,22 @@ public class Category {
         }
 
         public CategoryId() {
+        }
+
+        public void setToken(String token) {
+            this.token = token;
+        }
+
+        public void setId(long id) {
+            this.id = id;
+        }
+
+        public long getId() {
+            return id;
+        }
+
+        public String getToken() {
+            return token;
         }
     }
 }

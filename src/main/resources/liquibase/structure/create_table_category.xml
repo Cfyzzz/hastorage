@@ -1,0 +1,29 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_table_category" author="Nedovizin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="category"/>
+            </not>
+        </preConditions>
+        <createTable tableName="category" schemaName="hastorage" remarks="Категории">
+            <column autoIncrement="true" name="id" type="bigserial" remarks="Идентификатор">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="outCategoryId" type="bigserial" remarks="ИД категории" />
+            <column name="priority" type="integer" remarks="Приоритет"/>
+            <column name="color" type="integer" remarks="Цвет"/>
+            <column name="exposed" type="integer" remarks="Расходы"/>
+            <column name="reserved" type="integer" remarks="Резерв"/>
+            <column name="planned" type="integer" remarks="План"/>
+            <column name="period" type="varchar(64)" remarks="Период"/>
+            <column name="type" type="varchar(64)" remarks="Тип"/>
+            <column name="categoryName" type="varchar(20)" remarks="Имя категории"/>
+            <column name="token" type="varchar(20)" remarks="Токен"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
