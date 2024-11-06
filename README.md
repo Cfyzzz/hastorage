@@ -10,5 +10,6 @@ sudo docker run --name hastorage -p 5454:5432 -e POSTGRES_USER=sanya -e POSTGRES
 5. Указать там же папку исходников java
 6. Lifcycle справа панель clean, compile, package, install
 7. Добавить запуск проекта Applcation класс Main
+8. В настройках приложения указать подключение http://XXX.XXX.XXX.XXX:8080  - IP адрес машины с базой. Токен указываем любой набор символов, но я обычно указываю по текущей дате SA01112024 - на 01.11.2024
 
 Вроде ничего не забыл
