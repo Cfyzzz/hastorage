@@ -5,7 +5,7 @@
 
 sudo docker run --name hastorage -p 5454:5432 -e POSTGRES_USER=sanya -e POSTGRES_PASSWORD=passWd1984! -e POSTGRES_DB=hastorage -d postgres:15.8
 
-3. Установить JDk 17
+3. Установить JDK 17
 4. Настроить папку output для проекта и указать в Modules Sources. Добавить её в исключения
 5. Указать там же папку ресурсов resources
 6. Указать там же папку исходников java
